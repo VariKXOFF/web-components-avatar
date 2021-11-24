@@ -23,6 +23,13 @@ h2,
 p {
     margin: 0;
 }
+input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+}
 .header {
     width: 100%;
     display: flex;
@@ -69,11 +76,13 @@ p {
 .text {
     font-size: 12px;
 }
-.button {
+.button,
+.word {
     border: 1px solid rgb(150, 150, 150);
     border-radius: 8px;
     width: 100px;
     height: 30px;
+    box-shadow: 0 3px 4px rgba(0,0,0,.15);
 }
 .button:hover {
     border-color: blue;
@@ -88,5 +97,13 @@ p {
     height: 100%;
 }
 .active {
+    border-color: blue;
+}
+.word {
+    padding-left: 5px;
+    box-sizing: border-box;
+    width: 200px;
+}
+.word:focus {
     border-color: blue;
 }
