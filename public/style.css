@@ -4,6 +4,16 @@ body {
 .header {
     height: 150px;
 }
-.main {
+custom-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
     height: calc(100vh - 150px);
+    flex-direction: column;
+    gap: 10px;
+}
+.avatar {
+    width: 100px;
+    height: 100px;
 }
