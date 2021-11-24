@@ -61,7 +61,6 @@ class Avatar extends HTMLElement {
         let choiceImage = this.querySelector(".choice__image")
         let choiceText = this.querySelector(".choice__text")
         let choiceBox = this.querySelector('.choice-box')
-        let image = this.querySelectorAll('.image')
 
         for(let i = 0; i < 12; i++){
             this.querySelector('.avatars').innerHTML += '<div class="box avatar"></div>'
@@ -82,30 +81,51 @@ class Avatar extends HTMLElement {
             choiceBox.innerHTML = `<input class="word" type="text" maxlength="25" placeholder="Введите текст">`
         })
         choiceBox.addEventListener("click", e => {
+            let image = this.querySelectorAll('.image')
             if(e.target.classList.contains('image1')){
                 for(let i = 0; i < this.querySelectorAll('.avatar').length; i++){
                     this.querySelectorAll('.avatar')[i].innerHTML = `<img class="image-avatars" src="/image/1.png">`
                 }
+                for(let i = 0; i < image.length; i++){
+                    image[i].parentNode.style.borderColor = "rgb(150, 150, 150)"
+                }
+                e.target.parentNode.style.borderColor = "blue"
             }
             if(e.target.classList.contains('image2')){
                 for(let i = 0; i < this.querySelectorAll('.avatar').length; i++){
                     this.querySelectorAll('.avatar')[i].innerHTML = `<img class="image-avatars" src="/image/2.png">`
                 }
+                for(let i = 0; i < image.length; i++){
+                    image[i].parentNode.style.borderColor = "rgb(150, 150, 150)"
+                }
+                e.target.parentNode.style.borderColor = "blue"
             }
             if(e.target.classList.contains('image3')){
                 for(let i = 0; i < this.querySelectorAll('.avatar').length; i++){
                     this.querySelectorAll('.avatar')[i].innerHTML = `<img class="image-avatars" src="/image/3.png">`
                 }
+                for(let i = 0; i < image.length; i++){
+                    image[i].parentNode.style.borderColor = "rgb(150, 150, 150)"
+                }
+                e.target.parentNode.style.borderColor = "blue"
             }
             if(e.target.classList.contains('image4')){
                 for(let i = 0; i < this.querySelectorAll('.avatar').length; i++){
                     this.querySelectorAll('.avatar')[i].innerHTML = `<img class="image-avatars" src="/image/4.png">`
                 }
+                for(let i = 0; i < image.length; i++){
+                    image[i].parentNode.style.borderColor = "rgb(150, 150, 150)"
+                }
+                e.target.parentNode.style.borderColor = "blue"
             }
             if(e.target.classList.contains('image5')){
                 for(let i = 0; i < this.querySelectorAll('.avatar').length; i++){
                     this.querySelectorAll('.avatar')[i].innerHTML = `<img class="image-avatars" src="/image/5.png">`
                 }
+                for(let i = 0; i < image.length; i++){
+                    image[i].parentNode.style.borderColor = "rgb(150, 150, 150)"
+                }
+                e.target.parentNode.style.borderColor = "blue"
             }
             if(e.target.classList.contains('word')){
                 this.querySelector('.word').addEventListener("change", e => {
