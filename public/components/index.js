@@ -40,46 +40,8 @@ class Avatar extends HTMLElement {
                 break
         }
     }
-    connectedCallback() {
-        this.innerHTML = `
-            <header class="header">
-                <h2>Выберите форму</h2>
-                <div class="controls">
-                    <button class="box square"></button>
-                    <button class="box roundness"></button>
-                    <button class="box circle"></button>
-                </div>
-                <div class="choice">
-                    <button class="button choice__image">Картинка</button>
-                    <button class="button choice__text">Текст</button>
-                </div>
-                <div class="choice-box"></div>
-                <button class="button randomButton" type="submit">Новый цвет</button>
-            </header>
-            <div class="avatars"></div>
-        `
-        let choiceImage = this.querySelector(".choice__image")
-        let choiceText = this.querySelector(".choice__text")
+    checkBox() {
         let choiceBox = this.querySelector('.choice-box')
-
-        for(let i = 0; i < 12; i++){
-            this.querySelector('.avatars').innerHTML += '<div class="box avatar"></div>'
-        }
-        this.setRandomColor()
-        this.setForm("square")
-        choiceImage.addEventListener("click", e => {
-            choiceImage.style.borderColor = "blue"
-            choiceText.style.borderColor = "rgb(150, 150, 150)"
-            choiceBox.innerHTML = ""
-            for(let i = 1; i <= 5; i++){
-                choiceBox.innerHTML += `<div class="box"><img class="image image${i}" src="/image/${i}.png"></div>`
-            }
-        })
-        choiceText.addEventListener("click", e => {
-            choiceText.style.borderColor = "blue"
-            choiceImage.style.borderColor = "rgb(150, 150, 150)"
-            choiceBox.innerHTML = `<input class="word" type="text" maxlength="25" placeholder="Введите текст">`
-        })
         choiceBox.addEventListener("click", e => {
             let image = this.querySelectorAll('.image')
             if(e.target.classList.contains('image1')){
@@ -135,11 +97,67 @@ class Avatar extends HTMLElement {
                 })
             }
         })
+    }
+    setImage() {
+        let choiceImage = this.querySelector(".choice__image")
+        let choiceText = this.querySelector(".choice__text")
+        let choiceBox = this.querySelector('.choice-box')
+        choiceImage.addEventListener("click", e => {
+            choiceImage.style.borderColor = "blue"
+            choiceText.style.borderColor = "rgb(150, 150, 150)"
+            choiceBox.innerHTML = ""
+            for(let i = 1; i <= 5; i++){
+                choiceBox.innerHTML += `<div class="box"><img class="image image${i}" src="/image/${i}.png"></div>`
+            }
+        })
+        this.checkBox()
+    }
+    setText() {
+        let choiceImage = this.querySelector(".choice__image")
+        let choiceText = this.querySelector(".choice__text")
+        let choiceBox = this.querySelector('.choice-box')
+
+        choiceText.addEventListener("click", e => {
+            choiceText.style.borderColor = "blue"
+            choiceImage.style.borderColor = "rgb(150, 150, 150)"
+            choiceBox.innerHTML = `<input class="word" type="text" maxlength="25" placeholder="Введите текст">`
+        })
+
         this.querySelector(".choice__text").addEventListener("click", e => {
             this.querySelector(".choice__text").style.borderColor = "blue"
             this.querySelector(".choice__image").style.borderColor = "rgb(150, 150, 150)"
 
         })
+        this.checkBox()
+    }
+    connectedCallback() {
+        this.innerHTML = `
+            <header class="header">
+                <h2>Выберите форму</h2>
+                <div class="controls">
+                    <button class="box square"></button>
+                    <button class="box roundness"></button>
+                    <button class="box circle"></button>
+                </div>
+                <div class="choice">
+                    <button class="button choice__image">Картинка</button>
+                    <button class="button choice__text">Текст</button>
+                </div>
+                <div class="choice-box"></div>
+                <button class="button randomButton" type="submit">Новый цвет</button>
+            </header>
+            <div class="avatars"></div>
+        `
+
+        for(let i = 0; i < 12; i++){
+            this.querySelector('.avatars').innerHTML += '<div class="box avatar"></div>'
+        }
+        
+        this.setRandomColor()
+        this.setForm("square")
+        this.setImage()
+        this.setText()
+
         this.querySelector('.randomButton').addEventListener("click", e => {
             this.setRandomColor()
         })
